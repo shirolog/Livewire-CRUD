@@ -20,7 +20,6 @@ class BookIndex extends Component
     public $id;
     public $oldImage;
     public $editWork = false;//更新するかどうかに必要
-    public $search = '';
 
 
 
@@ -101,22 +100,16 @@ class BookIndex extends Component
     }
 
 
+
+
     public function render()
     {   
-        if(!empty($this->search)){
-  
-            return view('livewire.book-index',[
 
-                'books' => Book::where('title', 'like', '%' . $this->search . '%')
-                ->orderBy('id', 'DESC')->paginate(3),
-            ]);
-        }else{
-
-            return view('livewire.book-index', [
-                'books' => Book::select('id', 'title', 'price', 'image', 'description')
-                ->orderBy('id', 'DESC')
-                ->paginate(3),
-            ]);
-        }
+        return view('livewire.book-index', [
+            'books' => Book::select('id', 'title', 'price', 'image', 'description')
+            ->orderBy('id', 'DESC')
+            ->paginate(3),
+        ]);
+        
     }
 }

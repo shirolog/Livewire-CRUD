@@ -1,7 +1,6 @@
 <div class="max-w-6xl mx-auto">
     <div class="text-right m-2 p-2">
-        <input type="text" wire:model.live="search" id="search" class="border-gray-300 rounded-md" placeholder="キーワード">
-        <x-button class="bg-blue-600 mt-2" wire:click="showBookModal">登録</x-button>
+    <x-button class="bg-blue-600 mt-2" wire:click="showBookModal">登録</x-button>
     </div>
 
     
