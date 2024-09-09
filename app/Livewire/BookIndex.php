@@ -7,6 +7,7 @@ use App\Models\Book;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Storage;//画像を削除するため
+use Illuminate\Http\Request;
 
 class BookIndex extends Component
 {   
@@ -21,7 +22,6 @@ class BookIndex extends Component
     public $oldImage;
     public $editWork = false;//更新するかどうかに必要
     public $search = '';
-
 
 
     public function showBookModal(){
@@ -101,12 +101,12 @@ class BookIndex extends Component
     }
 
 
+
     public function render()
     {   
         if(!empty($this->search)){
-  
             return view('livewire.book-index',[
-
+                'page' => request()->input('page', 1),
                 'books' => Book::where('title', 'like', '%' . $this->search . '%')
                 ->orderBy('id', 'DESC')->paginate(3),
             ]);
