@@ -21,7 +21,6 @@ class BookIndex extends Component
     public $id;
     public $oldImage;
     public $editWork = false;//更新するかどうかに必要
-    public $search = '';
 
 
     public function showBookModal(){
@@ -102,6 +101,7 @@ class BookIndex extends Component
 
 
 
+<<<<<<< HEAD
     public function render()
     {   
         if(!empty($this->search)){
@@ -118,5 +118,17 @@ class BookIndex extends Component
                 ->paginate(3),
             ]);
         }
+=======
+
+    public function render()
+    {   
+
+        return view('livewire.book-index', [
+            'books' => Book::select('id', 'title', 'price', 'image', 'description')
+            ->orderBy('id', 'DESC')
+            ->paginate(3),
+        ]);
+        
+>>>>>>> b9bee0fc1e06fd57aab3e49c2680717da012b08f
     }
 }
